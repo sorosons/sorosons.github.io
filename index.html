@@ -3,53 +3,440 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SoroSons — Mobile App Development</title>
-<meta name="description" content="SoroSons develops high-quality mobile applications and games for Android and iOS platforms.">
+<title>SoroSons — Mobile App &amp; Game Development</title>
+<meta name="description" content="SoroSons develops high-quality mobile applications and games for Android and iOS platforms. Innovative mobile solutions for the digital world.">
 <style>
+  :root {
+    --bg: #0b0f17;
+    --bg-soft: #111827;
+    --card: #151d2b;
+    --border: #253044;
+    --text: #e8edf4;
+    --muted: #94a3b8;
+    --accent: #4f8ef7;
+    --accent-2: #8b5cf6;
+    --radius: 14px;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    background: #0d1117; color: #e6edf3;
-    min-height: 100vh; display: flex; flex-direction: column;
+    background: var(--bg); color: var(--text); line-height: 1.6;
   }
-  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
-  .hero { max-width: 640px; text-align: center; }
-  .logo { font-size: 2.6rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 16px; }
-  .logo span { color: #4f8ef7; }
-  .tagline { font-size: 1.2rem; color: #9aa4b2; margin-bottom: 32px; line-height: 1.6; }
-  .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-  .badge { background: #161b22; border: 1px solid #30363d; border-radius: 20px; padding: 8px 18px; font-size: 0.9rem; color: #c9d1d9; }
-  .contact { font-size: 0.95rem; color: #9aa4b2; line-height: 1.8; }
-  .contact a { color: #4f8ef7; text-decoration: none; }
-  .contact a:hover { text-decoration: underline; }
-  footer { text-align: center; padding: 24px 20px; border-top: 1px solid #21262d; font-size: 0.85rem; color: #6e7681; }
-  footer a { color: #9aa4b2; text-decoration: none; margin: 0 10px; }
-  footer a:hover { color: #e6edf3; }
+  a { color: var(--accent); text-decoration: none; }
+  img { max-width: 100%; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---------- Nav ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(11, 15, 23, 0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { font-size: 1.35rem; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .brand span { color: var(--accent); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { color: var(--muted); font-size: 0.95rem; transition: color .15s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--accent); color: #fff !important; padding: 8px 18px;
+    border-radius: 8px; font-weight: 600;
+  }
+  .nav-cta:hover { filter: brightness(1.1); }
+  .menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 1.6rem; cursor: pointer; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative; overflow: hidden;
+    padding: 110px 0 100px; text-align: center;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(600px 300px at 20% 0%, rgba(79,142,247,.18), transparent 70%),
+      radial-gradient(600px 300px at 80% 10%, rgba(139,92,246,.15), transparent 70%);
+    pointer-events: none;
+  }
+  .hero h1 {
+    font-size: clamp(2.1rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -1px;
+    line-height: 1.15; margin-bottom: 20px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p { max-width: 620px; margin: 0 auto 36px; color: var(--muted); font-size: 1.15rem; }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 13px 28px; border-radius: 10px;
+    font-weight: 600; font-size: 1rem; transition: all .15s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { filter: brightness(1.12); transform: translateY(-1px); }
+  .btn-ghost { border: 1px solid var(--border); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-stats {
+    display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-top: 60px;
+  }
+  .stat b { display: block; font-size: 1.7rem; color: var(--text); }
+  .stat { color: var(--muted); font-size: 0.9rem; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 80px 0; }
+  section.alt { background: var(--bg-soft); }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 50px; }
+  .section-head .kicker {
+    display: inline-block; font-size: 0.8rem; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+  }
+  .section-head h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); letter-spacing: -0.5px; margin-bottom: 12px; }
+  .section-head p { color: var(--muted); }
+
+  /* ---------- Services ---------- */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .service {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 28px; transition: transform .15s, border-color .15s;
+  }
+  .service:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .service .icon {
+    width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center;
+    justify-content: center; font-size: 1.6rem; margin-bottom: 18px;
+    background: linear-gradient(135deg, rgba(79,142,247,.2), rgba(139,92,246,.2));
+  }
+  .service h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .service p { color: var(--muted); font-size: 0.95rem; }
+
+  /* ---------- Apps ---------- */
+  .tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 36px; flex-wrap: wrap; }
+  .tab {
+    border: 1px solid var(--border); background: none; color: var(--muted);
+    padding: 9px 22px; border-radius: 999px; font-size: 0.95rem; font-weight: 600; cursor: pointer;
+    transition: all .15s; font-family: inherit;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .apps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .app-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    overflow: hidden; transition: transform .15s, border-color .15s;
+  }
+  .app-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .app-icon {
+    height: 110px; display: flex; align-items: center; justify-content: center; font-size: 3rem;
+  }
+  .app-body { padding: 16px 18px 20px; }
+  .app-body h3 { font-size: 1rem; line-height: 1.35; margin-bottom: 10px; min-height: 2.6em; }
+  .app-meta { display: flex; justify-content: space-between; align-items: center; }
+  .chip {
+    font-size: 0.75rem; color: var(--muted); border: 1px solid var(--border);
+    padding: 3px 10px; border-radius: 999px;
+  }
+  .price { font-size: 0.85rem; font-weight: 700; color: var(--accent); }
+  .g1 { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
+  .g2 { background: linear-gradient(135deg, #7f1d1d, #ef4444); }
+  .g3 { background: linear-gradient(135deg, #713f12, #f59e0b); }
+  .g4 { background: linear-gradient(135deg, #4c1d95, #8b5cf6); }
+  .g5 { background: linear-gradient(135deg, #14532d, #22c55e); }
+  .g6 { background: linear-gradient(135deg, #164e63, #06b6d4); }
+  .g7 { background: linear-gradient(135deg, #831843, #ec4899); }
+  .g8 { background: linear-gradient(135deg, #312e81, #6366f1); }
+
+  /* ---------- About ---------- */
+  .about-wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: center; }
+  .about-text h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); letter-spacing: -0.5px; margin-bottom: 16px; }
+  .about-text p { color: var(--muted); margin-bottom: 14px; }
+  .about-list { list-style: none; margin-top: 10px; }
+  .about-list li { padding: 7px 0; color: var(--text); }
+  .about-list li::before { content: "✓"; color: var(--accent); font-weight: 700; margin-right: 10px; }
+  .about-visual {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 34px; text-align: center;
+  }
+  .about-visual .big { font-size: 4rem; margin-bottom: 12px; }
+  .about-visual p { color: var(--muted); font-size: 0.95rem; }
+
+  /* ---------- Contact ---------- */
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .contact-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 28px; text-align: center;
+  }
+  .contact-card .icon { font-size: 2rem; margin-bottom: 12px; }
+  .contact-card h3 { font-size: 1rem; margin-bottom: 8px; }
+  .contact-card p, .contact-card a { color: var(--muted); font-size: 0.92rem; word-break: break-word; }
+  .contact-card a:hover { color: var(--accent); }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--border); padding: 36px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .footer-inner p { color: var(--muted); font-size: 0.85rem; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--muted); font-size: 0.9rem; }
+  .footer-links a:hover { color: var(--text); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .grid-3, .contact-grid { grid-template-columns: 1fr 1fr; }
+    .apps-grid { grid-template-columns: 1fr 1fr; }
+    .about-wrap { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .nav-links {
+      display: none; position: absolute; top: 64px; left: 0; right: 0;
+      background: var(--bg-soft); border-bottom: 1px solid var(--border);
+      flex-direction: column; padding: 20px; gap: 18px;
+    }
+    .nav-links.open { display: flex; }
+    .menu-btn { display: block; }
+    .grid-3, .contact-grid, .apps-grid { grid-template-columns: 1fr; }
+    .hero { padding: 70px 0 60px; }
+    .hero-stats { gap: 24px; }
+  }
 </style>
 </head>
 <body>
-<main>
-  <div class="hero">
-    <div class="logo">Soro<span>Sons</span></div>
-    <p class="tagline">Innovative Mobile Solutions for the Digital World.<br>
-    We develop high-quality applications and games for Android and iOS platforms.</p>
-    <div class="badges">
-      <div class="badge">📱 Mobile Apps</div>
-      <div class="badge">🎮 Games</div>
-      <div class="badge">🗺️ Navigation &amp; Maps</div>
-      <div class="badge">🎵 Music Apps</div>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="brand">Soro<span>Sons</span></a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#apps">Our Apps</a>
+      <a href="#about">About Us</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="#contact" class="nav-cta">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Innovative Mobile Solutions<br>for the <em>Digital World</em></h1>
+    <p>We bring your mobile app ideas to life — developing high-quality applications
+    and games for Android and iOS platforms since 2019.</p>
+    <div class="hero-actions">
+      <a href="#apps" class="btn btn-primary">Explore Our Apps</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
     </div>
-    <div class="contact">
-      <strong>SORO SONS BİLGİ TEKNOLOJİSİ TİCARET LİMİTED ŞİRKETİ</strong><br>
-      Kayabaşı Mahallesi Ulubatlı Hasan Caddesi D Blok No:2 D29, 34494 İstanbul<br>
-      <a href="mailto:info@sorosons.com">info@sorosons.com</a>
+    <div class="hero-stats">
+      <div class="stat"><b>12+</b>Published Apps</div>
+      <div class="stat"><b>2</b>Platforms</div>
+      <div class="stat"><b>7+</b>Years of Experience</div>
     </div>
   </div>
-</main>
+</section>
+
+<section id="services" class="alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">What We Do</span>
+      <h2>From Idea to App Store</h2>
+      <p>We design, build, and publish mobile experiences across every major category.</p>
+    </div>
+    <div class="grid-3">
+      <div class="service">
+        <div class="icon">📱</div>
+        <h3>Mobile App Development</h3>
+        <p>Native, high-performance applications for iOS and Android — from utilities to AI-powered tools.</p>
+      </div>
+      <div class="service">
+        <div class="icon">🎮</div>
+        <h3>Game Development</h3>
+        <p>Casual and simulation games designed for fun, built for engagement and smooth gameplay.</p>
+      </div>
+      <div class="service">
+        <div class="icon">🎵</div>
+        <h3>Music &amp; Entertainment</h3>
+        <p>Drum pads, DJ tools, and entertainment apps enjoyed by users around the world.</p>
+      </div>
+      <div class="service">
+        <div class="icon">🗺️</div>
+        <h3>Navigation &amp; Maps</h3>
+        <p>Real-time navigation and map-based features with accurate route planning.</p>
+      </div>
+      <div class="service">
+        <div class="icon">📚</div>
+        <h3>Books &amp; Reading</h3>
+        <p>Story and novel apps that bring reading experiences to mobile screens.</p>
+      </div>
+      <div class="service">
+        <div class="icon">🤖</div>
+        <h3>AI-Powered Tools</h3>
+        <p>Creative tools like AI art generators and smart logo makers powered by modern AI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="apps">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Portfolio</span>
+      <h2>Our Applications</h2>
+      <p>A selection of apps and games we have published on the App Store and Google Play.</p>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-filter="all">All</button>
+      <button class="tab" data-filter="ios">iOS</button>
+      <button class="tab" data-filter="android">Android</button>
+      <button class="tab" data-filter="game">Games</button>
+      <button class="tab" data-filter="music">Music</button>
+    </div>
+    <div class="apps-grid">
+      <div class="app-card" data-tags="ios game">
+        <div class="app-icon g1">🚗</div>
+        <div class="app-body">
+          <h3>Parking Master: Traffic Jam</h3>
+          <div class="app-meta"><span class="chip">Casual</span><span class="price">Free</span></div>
+        </div>
+      </div>
+      <div class="app-card" data-tags="ios game">
+        <div class="app-icon g2">🔫</div>
+        <div class="app-body">
+          <h3>Real Gun Sound: Pistols of War</h3>
+          <div class="app-meta"><span class="chip">Simulation</span><span class="price">Free</span></div>
+        </div>
+      </div>
+      <div class="app-card" data-tags="ios">
+        <div class="app-icon g3">🎡</div>
+        <div class="app-body">
+          <h3>Spin Wheel — Decision Roulette</h3>
+          <div class="app-meta"><span class="chip">Entertainment</span><span class="price">Free</span></div>
+        </div>
+      </div>
+      <div class="app-card" data-tags="ios music">
+        <div class="app-icon g4">🎧</div>
+        <div class="app-body">
+          <h3>DJ Electro Drum Pads</h3>
+          <div class="app-meta"><span class="chip">Music</span><span class="price">Paid</span></div>
+        </div>
+      </div>
+      <div class="app-card" data-tags="ios music">
+        <div class="app-icon g7">🥁</div>
+        <div class="app-body">
+          <h3>Real Drum</h3>
+          <div class="app-meta"><span class="chip">Music</span><span class="price">Paid</span></div>
+        </div>
+      </div>
+      <div class="app-card" data-tags="ios">
+        <div class="app-icon g5">🪒</div>
+        <div class="app-body">
+          <h3>Real Razor Pro</h3>
+          <div class="app-meta"><span class="chip">Entertainment</span><span class="price">Paid</span></div>
+        </div>
+      </div>
+      <div class="app-card" data-tags="android">
+        <div class="app-icon g8">📖</div>
+        <div class="app-body">
+          <h3>Hunter Novel: Story &amp; Books</h3>
+          <div class="app-meta"><span class="chip">Books</span><span class="price">Free</span></div>
+        </div>
+      </div>
+      <div class="app-card" data-tags="android">
+        <div class="app-icon g6">📞</div>
+        <div class="app-body">
+          <h3>DuoLine: Second Mobile Number</h3>
+          <div class="app-meta"><span class="chip">Reference</span><span class="price">Free</span></div>
+        </div>
+      </div>
+      <div class="app-card" data-tags="android">
+        <div class="app-icon g4">🎨</div>
+        <div class="app-body">
+          <h3>AI Art Draw Picture</h3>
+          <div class="app-meta"><span class="chip">Graphics &amp; Design</span><span class="price">Free</span></div>
+        </div>
+      </div>
+      <div class="app-card" data-tags="android">
+        <div class="app-icon g2">🛡️</div>
+        <div class="app-body">
+          <h3>Esports Logo Maker: Creator</h3>
+          <div class="app-meta"><span class="chip">Utilities</span><span class="price">Free</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="alt">
+  <div class="container about-wrap">
+    <div class="about-text">
+      <span class="kicker" style="display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">About Us</span>
+      <h2>A Mobile-First Software Company from İstanbul</h2>
+      <p>SoroSons (SORO SONS BİLGİ TEKNOLOJİSİ TİCARET LİMİTED ŞİRKETİ) is a mobile software
+      company founded in İstanbul. Since 2019 we have been designing and publishing
+      applications and games used by people around the world.</p>
+      <p>Our portfolio spans games, music tools, books, navigation, and AI-powered creative apps —
+      all built with a focus on quality, performance, and user experience.</p>
+      <ul class="about-list">
+        <li>Native iOS &amp; Android development</li>
+        <li>Full lifecycle: design, development, publishing, support</li>
+        <li>12+ apps published across the App Store and Google Play</li>
+      </ul>
+    </div>
+    <div class="about-visual">
+      <div class="big">🚀</div>
+      <p><strong>Have an app idea?</strong><br>
+      We can bring your mobile app ideas to life — from the first sketch to the store listing.
+      Reach out and let's build it together.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Contact</span>
+      <h2>Get in Touch</h2>
+      <p>Questions about our apps, partnership offers, or a project in mind? We'd love to hear from you.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="icon">✉️</div>
+        <h3>Email</h3>
+        <a href="mailto:info@sorosons.com">info@sorosons.com</a>
+      </div>
+      <div class="contact-card">
+        <div class="icon">📍</div>
+        <h3>Address</h3>
+        <p>Kayabaşı Mah. Ulubatlı Hasan Cad.<br>D Blok No:2 D29, 34494<br>Başakşehir / İstanbul, Türkiye</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">🏢</div>
+        <h3>Company</h3>
+        <p>SORO SONS BİLGİ TEKNOLOJİSİ<br>TİCARET LİMİTED ŞİRKETİ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <a href="/privacy.html">Privacy Policy</a> ·
-  <a href="mailto:info@sorosons.com">Contact</a><br><br>
-  © 2019–2026 SORO SONS BİLGİ TEKNOLOJİSİ TİCARET LİMİTED ŞİRKETİ — All Rights Reserved
+  <div class="container footer-inner">
+    <p>© 2019–2026 SORO SONS BİLGİ TEKNOLOJİSİ TİCARET LİMİTED ŞİRKETİ — All Rights Reserved</p>
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="mailto:info@sorosons.com">Contact</a>
+    </div>
+  </div>
 </footer>
+
+<script>
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const f = tab.dataset.filter;
+      document.querySelectorAll('.app-card').forEach(card => {
+        card.style.display = (f === 'all' || card.dataset.tags.split(' ').includes(f)) ? '' : 'none';
+      });
+    });
+  });
+  document.querySelectorAll('.nav-links a').forEach(a =>
+    a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open')));
+</script>
+
 </body>
 </html>
