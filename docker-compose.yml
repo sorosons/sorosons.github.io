@@ -1,0 +1,11 @@
+services:
+  web:
+    image: nginx:alpine
+    container_name: sorosons-web
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3010:80"
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+      - ./privacy.html:/usr/share/nginx/html/privacy.html:ro
+      - ./app-ads.txt:/usr/share/nginx/html/app-ads.txt:ro
