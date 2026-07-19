@@ -1,0 +1,15 @@
+google.com, pub-8662631151006619, DIRECT, f08c47fec0942fa0
+google.com, pub-7577469130895080, DIRECT, f08c47fec0942fa0
+google.com, pub-4033964200227996, DIRECT, f08c47fec0942fa0
+google.com, pub-2232858577280661, DIRECT, f08c47fec0942fa0
+facebook.com, 2401459120012071, RESELLER, c3e20eee3f780d68
+applovin.com, bbccffb96fb451320882b0f31eaecdb0, DIRECT
+loopme.com, 11303, RESELLER, 6c8d5f95897a5a3b
+rubiconproject.com, 20744, RESELLER, 0bfd66d529a55807
+pubmatic.com, 158154, RESELLER, 5d62403b186f2ace
+pubmatic.com, 158862, RESELLER, 5d62403b186f2ace
+pubmatic.com, 159509, RESELLER, 5d62403b186f2ace
+xandr.com, 13799, RESELLER
+media.net, 8CUD06Z68, RESELLER
+unity.com, 4863762, DIRECT, 96cabb5fbdde37a7
+yandex.com, 105477887, DIRECT
