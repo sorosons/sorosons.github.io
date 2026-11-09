@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoScreen — Car Screen Mirror</title>
+<meta name="description" content="AutoScreen turns your Apple CarPlay screen into much more: full-screen mirroring and TV while parked, 34 dashboard themes, turn-by-turn navigation and 160,000+ speed camera alerts.">
+<style>
+  :root{--bg:#0a0d12;--card:#141922;--border:#27303f;--text:#edf1f7;--muted:#97a1b1;--accent:#2f7df6;--accent-2:#30c8d6}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  .container{max-width:980px;margin:0 auto;padding:0 20px}
+  header{padding:16px 0;border-bottom:1px solid var(--border)}
+  .nav{display:flex;justify-content:space-between;align-items:center}
+  .brand{font-weight:700;font-size:1.15rem}
+  .brand span{color:var(--accent-2)}
+  .nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:.93rem}
+  .nav a:hover{color:var(--text)}
+  .hero{text-align:center;padding:72px 0 56px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(560px 300px at 50% 0%,rgba(47,125,246,.2),transparent 70%);pointer-events:none}
+  .app-icon{width:96px;height:96px;border-radius:24px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-size:2.7rem;margin:0 auto 24px;box-shadow:0 12px 36px rgba(47,125,246,.35)}
+  h1{font-size:clamp(1.8rem,5vw,2.7rem);letter-spacing:-.5px;line-height:1.2;margin-bottom:10px}
+  .subtitle{color:var(--accent-2);font-weight:600;font-size:1.1rem;margin-bottom:16px}
+  .hero p.lead{max-width:600px;margin:0 auto 30px;color:var(--muted);font-size:1.08rem}
+  .store-btn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#000;padding:13px 26px;border-radius:14px;text-decoration:none;font-weight:700;font-size:1.02rem}
+  .store-btn:hover{transform:translateY(-1px)}
+  .store-btn small{display:block;font-weight:500;font-size:.72rem;color:#444;text-align:left;line-height:1.1}
+  .free{margin-top:14px;color:var(--muted);font-size:.88rem}
+  section{padding:52px 0}
+  h2{text-align:center;font-size:1.55rem;margin-bottom:32px;letter-spacing:-.3px}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px}
+  .card .ic{font-size:1.9rem;margin-bottom:12px}
+  .card h3{font-size:1.05rem;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:.94rem}
+  .safety{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--accent-2);border-radius:14px;padding:22px 24px;max-width:760px;margin:0 auto;color:var(--muted);font-size:.93rem}
+  .safety strong{color:var(--text)}
+  footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--muted);font-size:.88rem}
+  footer a{color:var(--muted);text-decoration:none;margin:0 8px}
+  footer a:hover{color:var(--text)}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}.hero{padding:52px 0 40px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="brand">Auto<span>Screen</span></div>
+    <nav>
+      <a href="/autoscreen/privacy.html">Privacy</a>
+      <a href="/autoscreen/eula.html">EULA</a>
+      <a href="mailto:sonssoro@gmail.com">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="app-icon">🚗</div>
+    <h1>AutoScreen: Car Screen Mirror</h1>
+    <div class="subtitle">Car TV Cast &amp; GPS Navigation</div>
+    <p class="lead">Turn your Apple CarPlay screen into much more: mirror your iPhone and watch TV while parked, style the car display with 34 dashboard themes, and drive with navigation and speed camera alerts.</p>
+    <a class="store-btn" href="https://apps.apple.com/us/app/autoscreen-car-screen-mirror/id6751195451">
+       <small>Download on the</small> App Store
+    </a>
+    <div class="free">Free to download · Premium: $4.99/month or $24.99/year</div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>What You Get</h2>
+    <div class="grid">
+      <div class="card"><div class="ic">📱</div><h3>CarPlay Screen Mirroring</h3><p>Mirror your iPhone to the CarPlay display with one tap — turn your phone sideways and the picture fills the whole car screen. Parked only.</p></div>
+      <div class="card"><div class="ic">📺</div><h3>TV &amp; Videos on the Car Screen</h3><p>Browse your own playlists by Live TV, Movies and Series. Car-screen controls, My Videos from Photos, and a full phone player with subtitles and sleep timer.</p></div>
+      <div class="card"><div class="ic">🎨</div><h3>34 Dashboard Themes</h3><p>Instrument clusters, lifestyle, speed and classic faces with clock, live speed, weather, compass, altitude and trip stats — switch right on the car screen.</p></div>
+      <div class="card"><div class="ic">🗺️</div><h3>Navigation &amp; Radar Alerts</h3><p>Turn-by-turn navigation on your phone and in CarPlay, 160,000+ speed cameras with voice alerts on your route, and one-tap reports of police and hazards.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="safety">
+      <strong>Safety first:</strong> video and screen mirroring are only for use while the vehicle is parked. The picture turns off automatically as soon as the car starts moving, and stays off without a GPS signal. AutoScreen is a player — it ships with no channels or content; use only playlists and videos you have the rights to. Never watch video while driving. Always follow local traffic laws.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <a href="/autoscreen/privacy.html">Privacy Policy</a> ·
+    <a href="/autoscreen/eula.html">Terms of Use (EULA)</a> ·
+    <a href="https://apps.apple.com/us/app/autoscreen-car-screen-mirror/id6751195451">App Store</a><br><br>
+    © 2026 SORO SONS BİLGİ TEKNOLOJİSİ TİCARET LİMİTED ŞİRKETİ — All Rights Reserved
+  </div>
+</footer>
+
+</body>
+</html>
